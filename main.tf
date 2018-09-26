@@ -159,7 +159,7 @@ resource "null_resource" "icp-image" {
 
   # Boot node is always the first entry in the IP list, so if we're not pulling in parallell this will only happen on boot node
   connection {
-    host          = "${element(local.icp-ips, count.index)}"
+    host          = "${local.boot-node}"
     user          = "${var.ssh_user}"
     private_key   = "${local.ssh_key}"
     agent         = "${var.ssh_agent}"
